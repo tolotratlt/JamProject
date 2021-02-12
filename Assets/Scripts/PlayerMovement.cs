@@ -35,7 +35,8 @@ public class PlayerMovement : MonoBehaviour
         //_animator.SetFloat("Speed", Mathf.Abs(_speed));
         if (_speed < 0) _sr.flipX = true;
         if (_speed > 0) _sr.flipX = false;
-        if (Input.GetKey(KeyCode.Space)&& CanJump) IsJumping = true;
+        if (Input.GetKey(KeyCode.Space) && CanJump) IsJumping = true;
+        Debug.Log(IsJumping);
         //if (transform.position.y <= DyingPoint.transform.position.y) transform.position = SpawnPoint.transform.position;
 
     }
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (obj.CompareTag("bonus"))
         {
-            transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+            transform.localScale += new Vector3(-0.5f, -0.5f, -0.5f);
             Destroy(obj.gameObject);
         }
     }
