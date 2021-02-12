@@ -40,6 +40,15 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void OnTriggerEnter2D(Collider2D obj)
+    {
+        if (obj.CompareTag("bonus"))
+        {
+            transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
+            Destroy(obj.gameObject);
+        }
+    }
+
     private void Move(float _speed)
     {
         var targetVelocity = new Vector2(_speed, _rb.velocity.y);
