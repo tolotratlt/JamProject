@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D _rb;
     private float _speed = 0;
-    //private Animator _animator;
+    private Animator _animator;
     private Vector3 _velocity;
     private bool IsJumping;
 
@@ -22,15 +22,15 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        //_animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if(CanJump)_animator.SetBool("IsJumping",false);
+        if(CanJump)_animator.SetBool("IsJump",false);
         _speed = Input.GetAxis("Horizontal")*Speed*Time.deltaTime;
-        //_animator.SetFloat("Speed", Mathf.Abs(_speed));
+        _animator.SetFloat("WalkSpeed", Mathf.Abs(_speed));
         if (_speed < 0) SpriteRenderer.flipX = true;
         if (_speed > 0) SpriteRenderer.flipX = false;        
         if (Input.GetButtonDown("Jump") && CanJump) IsJumping = true;
@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb.AddForce(new Vector2(0,JumpSpeed));
             IsJumping = false;
-            //_animator.SetBool("IsJumping",true);
+            _animator.SetBool("IsJump",true);
         }
     }
 
