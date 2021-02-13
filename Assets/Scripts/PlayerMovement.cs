@@ -34,9 +34,9 @@ public class PlayerMovement : MonoBehaviour
         _speed = Input.GetAxis("Horizontal")*Speed*Time.deltaTime;
         //_animator.SetFloat("Speed", Mathf.Abs(_speed));
         if (_speed < 0) SpriteRenderer.flipX = true;
-        if (_speed > 0) SpriteRenderer.flipX = false;
-        if (Input.GetKey(KeyCode.Space) && CanJump) IsJumping = true;
-        if(DyingPoint.transform.position.y>=transform.position.y)BackCheckpoint();
+        if (_speed > 0) SpriteRenderer.flipX = false;        
+        if (Input.GetButtonDown("Jump") && CanJump) IsJumping = true;
+        if (DyingPoint.transform.position.y>=transform.position.y)BackCheckpoint();
         //if (transform.position.y <= DyingPoint.transform.position.y) transform.position = SpawnPoint.transform.position;
 
     }
