@@ -4,13 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - bonus
-  - edge
-  - player
-  - plateforme
   - Left
   - Right
   - Enemy
+  - Plateform
+  - Edge
+  - Bonus
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

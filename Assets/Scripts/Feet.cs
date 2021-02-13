@@ -21,18 +21,18 @@ public class Feet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D obj)
     {
-        if(obj.CompareTag("plateforme"))player.transform.SetParent(obj.transform);
+        if(obj.CompareTag("Plateform"))player.transform.SetParent(obj.transform);
     }
 
     void OnTriggerExit2D(Collider2D obj)
     {
-        if (obj.CompareTag("plateforme")) player.transform.SetParent(null);
+        if (obj.CompareTag("Plateform")) player.transform.SetParent(null);
         player.CanJump = false;
     }
 
     void OnTriggerStay2D(Collider2D obj)
     {
-        player.CanJump = true;
+        if(!obj.CompareTag("Enemy"))player.CanJump = true;
     }
 
 }

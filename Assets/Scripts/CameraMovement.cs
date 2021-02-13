@@ -8,6 +8,13 @@ public class CameraMovement : MonoBehaviour
     public float Offset;
 
     private Vector3 velocity;
+
+    void Awake()
+    {
+        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = 60;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

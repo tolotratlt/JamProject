@@ -9,8 +9,7 @@ public class PlayerDamage : MonoBehaviour
 
     public float InvincibleTime;
     public float delay;
-
-    public SpriteRenderer renderer;
+    public PlayerMovement player;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +21,9 @@ public class PlayerDamage : MonoBehaviour
     {
         while (IsInvincible)
         {
-            renderer.color=new Color(1,1,1,0);
+            player.SpriteRenderer.color=new Color(1,1,1,0);
             yield return new WaitForSeconds(delay);
-            renderer.color = new Color(1, 1, 1, 1);
+            player.SpriteRenderer.color = new Color(1, 1, 1, 1);
             yield return new WaitForSeconds(delay);
         }
     }
@@ -37,12 +36,19 @@ public class PlayerDamage : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D obj)
     {
-        if (obj.CompareTag("Enemy")&&!IsInvincible)
+        if (obj.CompareTag("Enemy") && !IsInvincible && player.Life >= 1)
         {
+            player.Life--;
             IsInvincible = true;
             StartCoroutine(Flash());
             StartCoroutine(Invinciblility());
             transform.localScale += new Vector3(-0.5f, -0.5f, -0.5f);
+        }
+
+        if (player.Life < 1)
+        {
+            IsInvincible = false;
+            player.BackCheckpoint();
         }
     }
 
