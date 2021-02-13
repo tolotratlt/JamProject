@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - bonus
+  - edge
+  - player
+  - plateforme
+  - Left
+  - Right
+  - Enemy
   layers:
   - Default
   - TransparentFX

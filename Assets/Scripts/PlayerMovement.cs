@@ -12,9 +12,7 @@ public class PlayerMovement : MonoBehaviour
     //private Animator _animator;
     private Vector3 _velocity;
     public bool IsJumping;
-    private bool CanJump;
-    public GameObject Left;
-    public GameObject Right;
+    public bool CanJump;
     //public GameObject SpawnPoint;
     //public GameObject DyingPoint;
 
@@ -29,14 +27,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool CanJump = Physics2D.OverlapArea(Left.transform.position, Right.transform.position);
         //if(CanJump)_animator.SetBool("IsJumping",false);
         _speed = Input.GetAxis("Horizontal")*Speed*Time.deltaTime;
         //_animator.SetFloat("Speed", Mathf.Abs(_speed));
         if (_speed < 0) _sr.flipX = true;
         if (_speed > 0) _sr.flipX = false;
         if (Input.GetKey(KeyCode.Space) && CanJump) IsJumping = true;
-        Debug.Log(IsJumping);
         //if (transform.position.y <= DyingPoint.transform.position.y) transform.position = SpawnPoint.transform.position;
 
     }
@@ -45,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (obj.CompareTag("bonus"))
         {
-            transform.localScale += new Vector3(-0.5f, -0.5f, -0.5f);
+            transform.localScale += new Vector3(0.5f, 0.5f, 0.5f);
             Destroy(obj.gameObject);
         }
     }
@@ -53,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     private void Move(float _speed)
     {
         var targetVelocity = new Vector2(_speed, _rb.velocity.y);
-        _rb.velocity = Vector3.SmoothDamp(_rb.velocity, targetVelocity, ref _velocity, 0.3f);
+        _rb.velocity = Vector3.SmoothDamp(_rb.velocity, targetVelocity, ref _velocity, 0);
         if (IsJumping)
         {
             _rb.AddForce(new Vector2(0,JumpSpeed));

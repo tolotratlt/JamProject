@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformScript : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-
     public float Speed;
     public Transform start, end;
     public Transform startPosition;
@@ -24,7 +23,4 @@ public class PlatformScript : MonoBehaviour
         if (transform.position == end.position) nextPos = start.position;
         transform.position = Vector3.MoveTowards(transform.position, nextPos, Speed * Time.deltaTime);
     }
-
-    
-
 }
