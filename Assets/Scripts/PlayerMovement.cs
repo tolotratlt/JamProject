@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         if (_speed > 0) SpriteRenderer.flipX = false;        
         if (Input.GetButtonDown("Jump") && CanJump) IsJumping = true;
         if (DyingPoint.transform.position.y>=transform.position.y)BackCheckpoint();
-        //if (transform.position.y <= DyingPoint.transform.position.y) transform.position = SpawnPoint.transform.position;
 
     }
 
