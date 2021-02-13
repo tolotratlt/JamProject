@@ -10,15 +10,13 @@ public class PlayerMovement : MonoBehaviour
     public int Life = 2;
     public GameObject Checkpoint;
     public GameObject DyingPoint;
+    public bool CanJump;
 
     private Rigidbody2D _rb;
-    private float _speed=0;
+    private float _speed = 0;
     //private Animator _animator;
     private Vector3 _velocity;
-    public bool IsJumping;
-    public bool CanJump;
-    //public GameObject SpawnPoint;
-    //public GameObject DyingPoint;
+    private bool IsJumping;
 
     // Start is called before the first frame update
     void Start()
